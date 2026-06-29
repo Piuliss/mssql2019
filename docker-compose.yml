@@ -5,12 +5,10 @@ services:
     platform: linux/amd64
     hostname: sql2019
     restart: unless-stopped
-    environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "bJd17wHaL4i0r2gN"
-      MSSQL_PID: "Developer"
+    env_file:
+      - .env
     ports:
-      - "1433:1433"
+      - "${MSSQL_PORT:-1433}:1433"
     volumes:
       - ./data:/var/opt/mssql/data
       - ./log:/var/opt/mssql/log

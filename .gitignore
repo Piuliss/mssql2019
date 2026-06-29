@@ -3,3 +3,5 @@ backup/*
 log/*
 secrets/*
 
+# Variables de entorno con credenciales - NUNCA subir al repo
+.env

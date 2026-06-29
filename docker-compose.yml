@@ -1,0 +1,18 @@
+services:
+  sql2019:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sql2019
+    platform: linux/amd64
+    hostname: sql2019
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "bJd17wHaL4i0r2gN"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data:/var/opt/mssql/data
+      - ./log:/var/opt/mssql/log
+      - ./backup:/var/opt/mssql/backup
+      - ./secrets:/var/opt/mssql/secrets
